@@ -24,7 +24,7 @@
   </head>
   <body>
   
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">CV Sariniaga</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,9 +33,10 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link active" aria-current="page" href="{{ url('/')}}">Home</a>
-        <a class="nav-link" href="{{ url('/barangmasuk') }}">Barang Masuk</a>
-        <a class="nav-link" href="{{ url('/transaksi') }}">Transaksi Barang</a>
-        <a class="nav-link" href="{{ url('/datastok') }}">Data Stok</a>
+        <a class="nav-link" href="{{ url('/barangmasuk') }}">Barang masuk</a>
+        <a class="nav-link" href="{{ url('/transaksi') }}">Barang Keluar</a>
+        <a class="nav-link" href="{{ url('/databarang') }}">Data Barang</a>
+        <a class="nav-link" href="{{ url('/laporan') }}">Statistik dan Laporan</a>
        
       </div>
     </div>
@@ -45,7 +46,7 @@
 
 @yield('container')
 
-<div style="width: 500px; height: 500px">
+<div style="width: 500px; height: 500px ">
   <canvas id="myChart"></canvas>
 </div>
   <!-- Optional JavaScript; choose one of the two! -->

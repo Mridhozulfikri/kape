@@ -54,8 +54,6 @@ class BMController extends Controller
       
         $barangmasuk->save();
 
-       
-
         return redirect('barangmasuk')->with('added_success', 'Data Berhasil di Input');
     
     }

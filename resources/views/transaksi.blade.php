@@ -39,76 +39,48 @@ display: block;
               <th scope="col">No</th>
               <th scope="col">Kode Barang</th>
               <th scope="col">Nama Barang</th>
-              <th scope="col">Harga Masuk</th>
               <th scope="col">Stok</th>
+              <th scope="col">Harga Satuan</th>
+
               <th scope="col">Opsi</th>
             </tr>
           </thead>
           <tbody>
+            @php 
+            $no = 1;
+            @endphp
+  
+            @foreach ($barangmasuks as $barang)
             <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>Otto</td>
-              <td>Otto</td>
-              <td>
-                <button type="button" data-bs-toggle="modal" data-bs-target="#MODAL1" class="btn btn-primary">Tambahkan</button>
-                
+            
+              <td>{{ $no++}}</td>
+              <td>{{ $barang->kode_barang}}</td>
+              <td>{{ $barang->nama_barang}}</td>
+              <td>{{ $barang->qty}}</td>
+              <td>{{ $barang->harga_satuan}}</td>
+              {{-- <td hidden>{{$qtyy = $barang->qty }}</td>
+              <td hidden>{{$satuan = $barang->harga_satuan }}</td>
+              <td hidden>{{$tot = $qtyy*$satuan}}</td>
+               --}}
               
-              </td>
+              {{-- <td>{{$tot}}</td> --}}
+              {{-- <td>{{ $barang->jumlah_keseluruhan}}</td> --}}
+              <td>
+                <button type="button" 
+              data-bs-toggle="modal" 
+              data-bs-target="#ADD"  
+              id="btn-tambahkan-barang"
+              data-id="{{$barang->id}}"
+              data-kode-barang="{{$barang->kode_barang}}"
+              data-nama-barang="{{$barang->nama_barang}}"
+              data-qty="{{$barang->qty}}"
+              data-harga-satuan="{{$barang->harga_satuan}}" 
+              {{-- data-id="{{$barang->id}}"  --}}
+              class="btn btn-warning">Tambahkan</button>
+              </td>  
             </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Otto</td>
-              <td>Otto</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Otto</td>
-              <td>Otto</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>Otto</td>
-              <td>Otto</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <th scope="row">4</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>Otto</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">5</th>
-              <td>Jacob</td>
-              <td>Otto</td>
-              <td>Otto</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">6</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
-            <th scope="row">6</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
-          
+            @endforeach
+
           </tbody>
         </table>
       
@@ -125,7 +97,7 @@ display: block;
       <div class="table-wrapper-scroll-y my-custom-scrollbar">
 
         <table class="table table-bordered table-striped mb-0">
-          <thead>
+          <thead class="table-info">
             <tr>
               <th scope="col">No</th>
               <th scope="col">Kode Barang</th>
@@ -136,47 +108,31 @@ display: block;
             </tr>
           </thead>
           <tbody>
+            @php 
+            $no = 1;
+            @endphp
+  
+            @foreach ($barangkeluars as $barang)
             <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
+            
+              <td>{{ $no++}}</td>
+              <td>{{ $barang->kode_barang}}</td>
+              <td>{{ $barang->nama_barang}}</td>
+              <td>{{ $barang->harga_keluar}}</td>
+              <td>{{ $barang->qty}}</td>
+              <td>{{ $barang->total}}</td>
+
+
+              {{-- <td hidden>{{$qtyy = $barang->qty }}</td>
+              <td hidden>{{$satuan = $barang->harga_satuan }}</td>
+              <td hidden>{{$tot = $qtyy*$satuan}}</td>
+               --}}
+              
+              {{-- <td>{{$tot}}</td> --}}
+              {{-- <td>{{ $barang->jumlah_keseluruhan}}</td> --}}
+              
             </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
-            <tr>
-              <th scope="row">4</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">5</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">6</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
-            <th scope="row">6</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
+            @endforeach
           
           </tbody>
         </table>
@@ -195,23 +151,26 @@ display: block;
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Update</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">Tujuan dan Operasional</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form method="post" action="{{action('BKController@generatePDF')}}">
+          @csrf
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Masukan Alamat Tujuan</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <label class="form-label">Masukan Alamat Tujuan</label>
+            <input type="text" class="form-control" name="tujuan">
           </div>
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Masukan Nama Pengirim</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <label class="form-label">Masukan Nama Pengirim</label>
+            <input type="text" class="form-control" name="pengirim">
           </div>
-        </form>
+        
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-        <button type="button" class="btn btn-success">Cetak</button>
+        <button type="submit" class="btn btn-success">Cetak</button>
+        {{-- <a href="generatePDF" class="btn btn-info" target="_blank">CETAK PDF</a> --}}
+      </form>
       </div>
     </div>
   </div>
@@ -219,8 +178,8 @@ display: block;
    {{-- end modal --}}
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="MODAL1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<!-- Modal jumlah yang akan dikeluarkan -->
+<div class="modal fade" id="ADD" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -228,25 +187,90 @@ display: block;
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form method="post" action="{{action('BKController@store')}}" autocomplete="off" >
+          @csrf
+          <input type="text" name="id" id="edit-id" hidden>
+          {{-- <input type="text" name="id" id="edit-harga" > --}}
+          <input type="text" name="kodebrg" id="edit-kodebarang" hidden>
+          <input type="text" name="hargasatuan" id="edit-hargasatuan" >
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Nama Barang</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        </form>
-        <form>
+            <label  class="form-label">Nama Barang</label>
+            <input type="text" class="form-control" name="namabarang"  id="edit-namabarang" readonly>
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Qty</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        </form>
+            <label  class="form-label">Qty</label>
+            <input type="text" class="form-control" name="qty"  id="edit-qty">
+      
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-        <button type="button" class="btn btn-primary">Oke</button>
+        <button type="submit" class="btn btn-primary" id="btn-jumlah-barang">Oke</button>
+      </form>
+      
       </div>
     </div>
   </div>
 </div>
 
+<script src="jquery/jquery.min.js"></script>
+<script type="text/javascript">
+  
+  
+</script>
+<script>
+
+  $(document).on('click','#btn-tambahkan-barang',function(){
+      let id = $(this).data('id');
+
+        // AJAX untuk menampilkan data update
+      $.ajax({
+        type: "get",
+        url: 'transaksi/'+id,
+        dataType: 'json',
+        success: function(res){
+            // console.log(res);
+            $('#edit-id').val(res[0].id);
+             $('#edit-namabarang').val(res[0].nama_barang);
+             $('#edit-kodebarang').val(res[0].kode_barang);
+             $('#edit-hargasatuan').val(res[0].harga_satuan);
+            //  $('#edit-keterangan').text(res[0].keterangan);
+            $('#edit-qty').val(res[0].qty);
+          
+      
+            //  $('#edit-status option').filter(function(){
+            //      return ($(this).val()== res[0].status);
+            //  }).prop('selected', true);
+        }
+      });
+
+      
+  });
+  
+
+ 
+
+  //   $(document).on('click','#btn-restore-pegawai',function(){
+  //     let id_pegawai = $(this).data('id_pegawai');
+  //     $('#restore-id_pegawai').val(id_pegawai);
+
+  //   });
+
+  //   $(document).on('click','#btn-force-delete-pegawai',function(){
+  //     let id_pegawai = $(this).data('id_pegawai');
+  //     $('#force-delete-id_pegawai').val(id_pegawai);
+
+  //   });
+  function jumlah(){
+
+var a,b,c; //membuat variabel
+a=Number(document.getElementById("edit-hargasatuan").value); //menangkap input angka pertama
+b=Number(document.getElementById("edit-qty").value); //menangkap input angka kedua
+c = a * b; //melakukan penjumlahan
+document.getElementById('answer').innerHTML =" Hasilnya adalah " +  c;
+}
+</script>
+
+
+      
 
 
 

@@ -25,11 +25,7 @@ display: block;
     <nav class="navbar navbar-light ">
         <div class="container-fluid">
             <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahbarangmasuk">Tambah Barang Masuk</button>  
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Cari" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Cari</button>
-          </form>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahbarangmasuk">Tambah Barang Masuk</button>  
         </div>
         
     </nav>
@@ -122,6 +118,7 @@ display: block;
       </table>
     
     </div>
+    <p></p>
     <div class="row g-3 align-items-center">
       <div class="col-auto">
         <label for="inputPassword6"  class="col-form-label">Total Belanja  </label>
@@ -145,7 +142,7 @@ display: block;
         </div>
         <div class="modal-body">
           {{-- untuk mengakses controller di form method harus diisi kode --}}
-            <form method="post" action="{{action('BMController@store')}}">
+            <form method="post" action="{{action('BMController@store')}}" autocomplete="off">
               @csrf
               <div class="form-group">
                 <div class="mb-3">
@@ -188,10 +185,10 @@ display: block;
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form method="post" action="{{action('BMController@update','update')}}"  >
+        <form method="post" action="{{action('BMController@update','update')}}" autocomplete="off" >
           @method('PATCH')
           @csrf
-          <input type="text" name="id" id="edit-id">
+          <input type="text" name="id" id="edit-id" hidden>
           <div class="mb-3">
               <label for="recipient-name"  class="col-form-label">Kode Barang:</label>
               <input type="text" name="kode_barang" class="form-control" id="edit-kodebarang" readonly>
@@ -251,19 +248,8 @@ display: block;
 <script>
   $(document).on('click','#btn-edit-barang',function(){
       let id = $(this).data('id');
-      // let nama = $(this).data('nama');
-      // let keterangan = $(this).data('keterangan');
-      // let status = $(this).data('status');
 
-      // $('#edit-id_pegawai').val(id_pegawai);
-      // $('#edit-nama').val(nama);
-      // $('#edit-keterangan').text(keterangan);
-      
-      // $('#edit-status option').filter(function(){
-      //     return ($(this).val()== status);
-      // }).prop('selected', true);
-
-        // AJAX 
+        // AJAX untuk menampilkan data update
       $.ajax({
         type: "get",
         url: 'barangmasuk/'+id,

@@ -1,6 +1,6 @@
 @extends('layout/main')
 
-@section('title' , 'Stok Update')
+@section('title' , 'laporan')
     
 @section('container')
 <title>Data Stok Barang</title>
@@ -14,6 +14,7 @@
     
 </head>
 <body>
+    <p>asu</p>
     
 </body>
 </html>
