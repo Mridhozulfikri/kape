@@ -78,14 +78,14 @@ display: block;
             <td>{{ $barang->kode_barang}}</td>
             <td>{{ $barang->nama_barang}}</td>
             <td>{{ $barang->qty}}</td>
-            <td>{{ $barang->harga_satuan}}</td>
+            <td>Rp. {{number_format($barang->harga_satuan)}}</td>
             <td hidden>{{$qtyy = $barang->qty }}</td>
             <td hidden>{{$satuan = $barang->harga_satuan }}</td>
             <td hidden>{{$tot = $qtyy*$satuan}}</td>
             
             
             
-            <td>{{$tot}}</td>
+            <td>Rp. {{number_format($tot)}}</td>
             {{-- <td>{{ $barang->jumlah_keseluruhan}}</td> --}}
             
 

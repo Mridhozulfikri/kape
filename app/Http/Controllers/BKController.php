@@ -46,11 +46,13 @@ class BKController extends Controller
         $barangkeluar->kode_barang = $request->get('kodebrg');
         $barangkeluar->nama_barang = $request->get('namabarang');
         $barangkeluar->qty = $request->get('qty');
-        $barangkeluar->harga_keluar = $request->get('hargasatuan');
-        $tot = $request->get('qty');
-        $tit = $request->get('hargasatuan');
-        $toet = $tot * $tit;
-        $barangkeluar->total = $toet;
+        $satuan = $request->get('hargasatuan');
+        $bati =  $satuan * 0.3;
+        $total = $bati + $satuan;
+        $barangkeluar->harga_keluar=$total;
+        $qty = $request->get('qty');
+        $hasil = $qty * $total ;
+        $barangkeluar->total = $hasil;
         $barangkeluar->save();
 
        
@@ -71,17 +73,8 @@ class BKController extends Controller
         $pdf = PDF::loadView('suratjalan',compact('barangkeluars','tujuan','pengirim'));
         // return $pdf->download('suratjalan-pdf.pdf');
         // return view('suratjalan', compact('barangkeluars','tujuan','pengirim'));
-        $barang = Barangkeluar::truncate();
+        // $barang = Barangkeluar::truncate();
         return $pdf->stream();
-        
-        
-       
-       
-       
-        
-        
-        
-        
         
 
     }

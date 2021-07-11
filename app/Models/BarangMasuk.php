@@ -27,6 +27,10 @@ class BarangMasuk extends Model
         'jumlah_keseluruhan'
     ];
 
+public function barangkeluar(){
+    return $this->hasOne(Barangkeluar::class);
+}
+
 //Untuk Ajax
 public static function getBarang($id){
 
@@ -59,3 +63,5 @@ static function getLastID(){
 
 }
 }
+
+

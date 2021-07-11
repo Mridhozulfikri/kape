@@ -57,7 +57,7 @@ display: block;
               <td>{{ $barang->kode_barang}}</td>
               <td>{{ $barang->nama_barang}}</td>
               <td>{{ $barang->qty}}</td>
-              <td>{{ $barang->harga_satuan}}</td>
+              <td>Rp. {{number_format($barang->harga_satuan)}}</td>
               {{-- <td hidden>{{$qtyy = $barang->qty }}</td>
               <td hidden>{{$satuan = $barang->harga_satuan }}</td>
               <td hidden>{{$tot = $qtyy*$satuan}}</td>
@@ -105,6 +105,7 @@ display: block;
               <th scope="col">Harga Keluar Per Item</th>
               <th scope="col">Qty</th>
               <th scope="col">Total</th>
+              <th scope="col">Opsi</th>
             </tr>
           </thead>
           <tbody>
@@ -118,9 +119,22 @@ display: block;
               <td>{{ $no++}}</td>
               <td>{{ $barang->kode_barang}}</td>
               <td>{{ $barang->nama_barang}}</td>
-              <td>{{ $barang->harga_keluar}}</td>
+              <td>Rp. {{number_format($barang->harga_keluar)}}</td>
               <td>{{ $barang->qty}}</td>
-              <td>{{ $barang->total}}</td>
+              <td>Rp. {{number_format($barang->total)}}</td>
+              <td>
+                <button type="button" 
+              data-bs-toggle="modal" 
+              data-bs-target="#ADD"  
+              id="btn-tambahkan-barang"
+              data-id="{{$barang->id}}"
+              data-kode-barang="{{$barang->kode_barang}}"
+              data-nama-barang="{{$barang->nama_barang}}"
+              data-qty="{{$barang->qty}}"
+              data-harga-satuan="{{$barang->harga_satuan}}" 
+              {{-- data-id="{{$barang->id}}"  --}}
+              class="btn btn-warning">Hapus</button>
+              </td>
 
 
               {{-- <td hidden>{{$qtyy = $barang->qty }}</td>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\BarangMasuk;
+use App\Models\BarangKeluar;
 
 class LaporanController extends Controller
 {
@@ -13,7 +15,11 @@ class LaporanController extends Controller
      */
     public function index()
     {
-        return view('laporan');
+        // $barangmasuks = BarangMasuk::all();
+        // $lastID = BarangMasuk::getLastID();
+        $barangmasuks = BarangMasuk::all();
+        $barangkeluar = BarangKeluar::all();
+        return view('laporan', compact('barangmasuks','barangkeluar'));
     }
 
     /**

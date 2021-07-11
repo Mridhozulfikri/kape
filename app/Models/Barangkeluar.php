@@ -23,6 +23,10 @@ class barangkeluar extends Model
         'harga_keluar', 
         'total'
     ];
+    public function barangmasuk(){
+        return $this->belongsTo(Barangkeluar::class,'id','barang_id');
+    }
+    
     public static function getBarang($id){
 
         $barang = BarangMasuk::where('id',$id)->get();

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\BarangMasuk;
+use App\Models\Inventory;
 
 use DB;
 
@@ -44,16 +45,25 @@ class BMController extends Controller
     {
         
         $barangmasuk = new BarangMasuk;
-        
+        $inven = new Inventory;
         $barangmasuk->kode_barang = $request->get('kode_barang');
         $barangmasuk->nama_barang = $request->get('namabrg');
         $barangmasuk->qty = $request->get('qty');
         $barangmasuk->harga_satuan = $request->get('hrgsatuan');
         // $barangmasuk->jumlah_keseluruhan = null;
-        
-      
-        $barangmasuk->save();
+        $inven->kode_barang = $request->get('kode_barang');
+        $inven->nama_barang = $request->get('namabrg');
+        $inven->qty = $request->get('qty');
+        $inven->harga_satuan = $request->get('hrgsatuan');
 
+        $tot = $request->get('qty');
+        $tit = $request->get('hrgsatuan');
+        $toet = $tot * $tit;
+        $inven->total = $toet;
+
+        $inven->save();
+        $barangmasuk->save();
+        
         return redirect('barangmasuk')->with('added_success', 'Data Berhasil di Input');
     
     }
@@ -67,7 +77,7 @@ class BMController extends Controller
     public function show($id)
     {
         $barang = BarangMasuk::getBarang($id);
-
+        
         return response()->json($barang);
     }
 
@@ -114,7 +124,8 @@ class BMController extends Controller
     {
         $Barang = BarangMasuk::where('id', $request->get('id'))
         ->delete();
-        
+        $inven = Inventory::where('id', $request->get('id'))
+        ->delete();
 
         
 

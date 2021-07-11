@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\BarangMasuk;
+use App\Models\Inventory;
 
 use DB;
 
@@ -17,7 +17,8 @@ class DataBarangController extends Controller
      */
     public function index()
     {
-        return view('databarang');
+        $barangmasuks = Inventory::all();
+        return view('databarang', compact('barangmasuks'));
     }
 
     /**
@@ -38,7 +39,7 @@ class DataBarangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      
     }
 
     /**
@@ -83,6 +84,12 @@ class DataBarangController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $Barang = Inventory::where('id', $request->get('id'))
+        ->delete();
+        
+
+        
+
+        return redirect('barangmasuk')->with('deleted_success', 'Data berhasil dihapus');
     }
 }
