@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Inventory;
+use App\Models\BarangMasuk;
+
 
 use DB;
 
-class DataBarangController extends Controller
+class InvoiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +19,8 @@ class DataBarangController extends Controller
      */
     public function index()
     {
-        $barangmasuks = Inventory::all();
-        return view('databarang', compact('barangmasuks'));
+        $barangmasuks = BarangMasuk::all();
+        return view('Invoice', compact('barangmasuks'));
     }
 
     /**
@@ -90,6 +92,6 @@ class DataBarangController extends Controller
 
         
 
-        return redirect('barangmasuk')->with('deleted_success', 'Data berhasil dihapus');
+        return redirect('Invoice')->with('deleted_success', 'Data berhasil dihapus');
     }
 }

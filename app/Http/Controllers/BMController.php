@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\BarangMasuk;
 use App\Models\Inventory;
-
+use PDF;
 use DB;
 
 
@@ -19,7 +19,7 @@ class BMController extends Controller
      */
     public function index()
     {
-        $barangmasuks = BarangMasuk::all();
+        $barangmasuks = DB::table('barangmasuk')->where('qty','>','0')->get();
         $lastID = BarangMasuk::getLastID();
       
         return view('barangmasuk',["lastID"=>$lastID], compact('barangmasuks'));
@@ -34,7 +34,22 @@ class BMController extends Controller
     {
         //
     }
+    public function generatePDFlbm(Request $request)
 
+    {
+        
+        $lbm = BarangMasuk::all();
+        
+  
+        
+        $pdf = PDF::loadView('lbm',compact('lbm'));
+        // return $pdf->download('suratjalan-pdf.pdf');
+        // return view('lbm', compact('lbm'));
+        // $barang = Barangkeluar::truncate();
+        return $pdf->stream();
+        
+
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -110,6 +125,14 @@ class BMController extends Controller
             'harga_satuan' => $request->get('hrgsatuan'),
             
         ]);
+        $inven = Inventory::where('id', $request->get('id'))
+        ->update([
+            'kode_barang' => $request->get('kode_barang'),
+            'nama_barang' => $request->get('namabrg'),
+            'qty' => $request->get('qty'),
+            'harga_satuan' => $request->get('hrgsatuan'),
+            
+        ]);
 
         return redirect('barangmasuk')->with('updated_success', 'Data Berhasil di Ubah');
     }
@@ -124,8 +147,8 @@ class BMController extends Controller
     {
         $Barang = BarangMasuk::where('id', $request->get('id'))
         ->delete();
-        $inven = Inventory::where('id', $request->get('id'))
-        ->delete();
+        // $inven = Inventory::where('id', $request->get('id'))
+        // ->delete();
 
         
 

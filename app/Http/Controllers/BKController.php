@@ -78,6 +78,23 @@ class BKController extends Controller
         
 
     }
+    public function generatePDFlbk(Request $request)
+
+    {
+        
+        $lbk = Barangkeluar::all();
+        // $tujuan = $request->get('tujuan');
+        // $pengirim = $request->get('pengirim');
+        // $data = ['title' => 'Welcome to belajarphp.net'];
+        
+        $pdf = PDF::loadView('lbk',compact('lbk'));
+        // return $pdf->download('suratjalan-pdf.pdf');
+        // return view('suratjalan', compact('barangkeluars','tujuan','pengirim'));
+        // $barang = Barangkeluar::truncate();
+        return $pdf->stream();
+        
+
+    }
 
     /**
      * Display the specified resource.

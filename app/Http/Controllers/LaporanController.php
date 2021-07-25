@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\BarangMasuk;
 use App\Models\BarangKeluar;
+use App\Models\Inventory;
 
 class LaporanController extends Controller
 {
@@ -17,7 +18,7 @@ class LaporanController extends Controller
     {
         // $barangmasuks = BarangMasuk::all();
         // $lastID = BarangMasuk::getLastID();
-        $barangmasuks = BarangMasuk::all();
+        $barangmasuks = Inventory::all();
         $barangkeluar = BarangKeluar::all();
         return view('laporan', compact('barangmasuks','barangkeluar'));
     }

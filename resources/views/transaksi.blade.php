@@ -206,11 +206,11 @@ display: block;
           <input type="text" name="id" id="edit-id" hidden>
           {{-- <input type="text" name="id" id="edit-harga" > --}}
           <input type="text" name="kodebrg" id="edit-kodebarang" hidden>
-          <input type="text" name="hargasatuan" id="edit-hargasatuan" >
+          <input type="text" name="hargasatuan" id="edit-hargasatuan" hidden>
           <div class="mb-3">
             <label  class="form-label">Nama Barang</label>
             <input type="text" class="form-control" name="namabarang"  id="edit-namabarang" readonly>
-          <div class="mb-3">
+          <div class="mb-3  ">
             <label  class="form-label">Qty</label>
             <input type="text" class="form-control" name="qty"  id="edit-qty">
       

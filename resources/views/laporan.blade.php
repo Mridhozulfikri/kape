@@ -28,7 +28,7 @@
               <th scope="col">TGL MASUK</th>
               <th scope="col">NAMA BARANG</th>
               <th scope="col">QTY</th>
-              <th scope="col">TOTAL BELANJA</th>
+              {{-- <th scope="col"></th> --}}
              
             </tr>
           </thead>
@@ -44,13 +44,13 @@
               <td>{{ $barang->created_at}}</td>
               <td>{{ $barang->nama_barang}}</td>
               <td>{{ $barang->qty}}</td>
-              <td hidden>{{$qtyy = $barang->qty }}</td>
+              {{-- <td hidden>{{$qtyy = $barang->qty }}</td>
               <td hidden>{{$satuan = $barang->harga_satuan }}</td>
               <td hidden>{{$tot = $qtyy*$satuan}}</td>
             
             
             
-            <td>Rp. {{number_format($tot)}}</td>
+            <td>Rp. {{number_format($tot)}}</td> --}}
              
             </tr>
             @endforeach
@@ -59,9 +59,12 @@
         </table>
       
       </div>
+      <form method="post" action="{{action('BMController@generatePDFlbm')}}">
+        @csrf
       <div align="right"> <br>
-        <button  type="button" data-bs-toggle="modal" data-bs-target="#MODAL2" class="btn btn-success" >Cetak Laporan</button>
-    </div>
+        <button  type="submit" class="btn btn-success" >Cetak LBM</button>
+      </div>
+      </form>
     </div>
  
 
@@ -79,8 +82,8 @@
           <th scope="col">NAMA BARANG</th>
           <th scope="col">TUJUAN</th>
           <th scope="col">QTY</th>
-          <th scope="col">TOTAL UANG BARANG KELUAR</th>
-         
+          {{-- <th scope="col"></th>
+          --}}
         </tr>
       </thead>
       <tbody>
@@ -96,7 +99,7 @@
           <td>{{ $barang->nama_barang}}</td>
           <td>tujuan</td>
           <td>{{ $barang->qty}}</td>
-          <td>{{ $barang->total}}</td>
+          {{-- <td>{{ $barang->total}}</td> --}} 
          
         </tr>
         @endforeach
@@ -105,9 +108,12 @@
     </table>
   
   </div>
+  <form method="post" action="{{action('BKController@generatePDFlbk')}}">
+    @csrf
   <div align="right"> <br>
-    <button  type="button" data-bs-toggle="modal" data-bs-target="#MODAL2" class="btn btn-success" >Cetak Laporan</button>
+    <button  type="submit" data-bs-toggle="modal" data-bs-target="#MODAL2" class="btn btn-success" >Cetak LBK</button>
 </div>
+  </form>
 </div>
 
 
@@ -124,7 +130,8 @@
           <th scope="col">TGL BELANJA</th>
           <th scope="col">TOTAL BELANJA</th>
           <th scope="col">TGL KELUAR</th>
-          <th scope="col">TOTAL KELUAR</th>
+          <th scope="col">TOTAL Penjualan</th>
+          <th scope="col">Profit</th>
         </tr>
       </thead>
       <tbody>
@@ -151,7 +158,7 @@
   
   </div>
   <div align="right"> <br>
-    <button  type="button" data-bs-toggle="modal" data-bs-target="#MODAL2" class="btn btn-success" >Cetak Laporan</button>
+    <button  type="button" data-bs-toggle="modal" data-bs-target="#MODAL2" class="btn btn-success" >Cetak Laporan Keuangan</button>
 </div>
 </div>
 

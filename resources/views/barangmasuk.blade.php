@@ -26,6 +26,10 @@ display: block;
         <div class="container-fluid">
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahbarangmasuk">Tambah Barang Masuk</button>  
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Pencarian" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Cari</button>
+            </form>
         </div>
         
     </nav>
@@ -119,7 +123,7 @@ display: block;
     
     </div>
     <p></p>
-    <div class="row g-3 align-items-center">
+    {{-- <div class="row g-3 align-items-center">
       <div class="col-auto">
         <label for="inputPassword6"  class="col-form-label">Total Belanja  </label>
       </div>
@@ -129,7 +133,7 @@ display: block;
       
       </div>
       
-    </div>
+    </div> --}}
 
 <!-- Modal tambah barang-->
 

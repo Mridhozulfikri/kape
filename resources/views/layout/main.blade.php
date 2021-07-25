@@ -33,9 +33,9 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link" aria-current="page" href="{{ url('/')}}">Home</a>
-        <a class="nav-link" href="{{ url('/barangmasuk') }}">Barang masuk</a>
+        <a class="nav-link" href="{{ url('/barangmasuk') }}">Kelola Barang</a>
         <a class="nav-link" href="{{ url('/transaksi') }}">Barang Keluar</a>
-        <a class="nav-link" href="{{ url('/databarang') }}">Data Barang</a>
+        <a class="nav-link" href="{{ url('/invoice') }}">invoice</a>
         <a class="nav-link" href="{{ url('/laporan') }}">Laporan</a>
        
       </div>
